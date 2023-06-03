@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HTML5 Basic</title>
+        <!--10주차 ppt 참고, pc=메뉴 왼쪽 , 모바일 메뉴 위쪽-->
+        <!--float 태그 left와 right를 통해서 배치-->
+        <!--토글 쓰기위해서 jquery로 다시 작성해보자.-->
+        <meta name="viewport" content="user-scalable=yes,initial-scale=1">
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script>
+            /** ----------------------------------------------------------spa 실행 되는 펑션   시작-----------------------------------------------------------**/
+            function buttonClick1(){
+                document.getElementById("mainPage").style.display ="none";
+                document.getElementById("showMePage").style.display ="none";
+                document.getElementById("targetPage").style.display ="none";
+                document.getElementById("listPage").style.display ="none";
+
+                /** 자기소개 화면이 출력 되도록**/
+                const btn1 = document.getElementById('showMePage');
+                if (btn1.style.display !== 'none'){
+                    btn1.style.display = 'none';
+                }
+                else {
+                    btn1.style.display ='block';
+                }
+            }
+            function buttonClick2(){
+                document.getElementById("mainPage").style.display ="none";
+                document.getElementById("showMePage").style.display ="none";
+                document.getElementById("targetPage").style.display ="none";
+                document.getElementById("listPage").style.display ="none";
+                
+                /** 목표 화면이 출력 되도록**/
+                const btn2 = document.getElementById('targetPage');
+                if (btn2.style.display !== 'none'){
+                    btn2.style.display = 'none';
+                }
+                else {
+                    btn2.style.display ='block';
+                }
+            }
+            function buttonClick3(){
+                document.getElementById("mainPage").style.display ="none";
+                document.getElementById("showMePage").style.display ="none";
+                document.getElementById("targetPage").style.display ="none";
+                document.getElementById("listPage").style.display ="none";
+
+                /** 미정 화면이 출력 되도록**/
+                const btn3 = document.getElementById('listPage');
+                if (btn3.style.display != 'none'){
+                    btn3.style.display ='none';
+                }
+                else {
+                    btn3.style.display = 'block';
+                }
+            }
+            /** ----------------------------------------------------------spa 실행 되는 펑션   끝-----------------------------------------------------------**/
+
+            /**메뉴네비게이션----------------------------------------------------- **/
+        $(document).ready(function(){
+            $(".menu>a").click(function(){
+                var submenu = $(this).next("ul");
+                if( submenu.is(":visible") ){
+                    submenu.slideUp();
+                }else{
+                    submenu.slideDown();
+                }
+            });
+        });
+            /**메뉴네비게이션----------------------------------------------------- **/
+        </script>
+
+        <style>
+            *{margin:0; padding:0;}
+            body {padding-top: 110px; padding-left: 10px; overflow: scroll;}
+            .mainMenu{display: flex; position: fixed; top: 0; left: 0; right: 0; height: 100px; background:white ; justify-content: space-between;}
+            #checkList{width: 300px; height: 500px; border:solid;}
+            .img1{width: 250px;}
+            /**
+            -------------------------------------------메인 버튼 스타일 시작------------------------------------------------------------------------------ **/
+            /** 이후에 모바일 웹 시작-----------------------------------------------------------------**/
+            @media (max-width: 799px) { 
+                button{display:block; margin: 10px; padding:20px 20px; border-radius: 10%;}
+                #img1{max-width:100%; height:300px ; display: block; margin: 10px; padding: 10px;}
+            }
+
+            @media (min-width: 800px) { 
+                button{display:inline; margin: 10px;padding:20px 20px; border-radius: 10%;}
+                #img1{width:400px; height: 600px; display: inline; margin: 10px; float: left;}
+                #buttons {
+                position: fixed;
+                left: 35%; top:43%;
+                }
+                #showMeButton {margin-right: 20px;}
+                #targetButton {margin-right: 20px;}
+                #xButton {margin-right: 20px;}
+                button{padding:50px 50px; border-radius: 10%;}
+                }
+                #showMeWrite{
+                    display: block;
+                }
+            /** 이후에 모바일 웹 끝--------------------------------------------------------------------**/
+            /**-------------------------------------------메인 버튼 스타일 끝 ------------------------------------------------------------------------------ **/
+            
+
+            #개인사진{
+                display: block;
+            }
+            
+        </style>
+
+
+    </head>
+
+
+    <body>
+        <!--메인 화면 시작 ----------------------------------------------------------------------------------------------------------------------------------------->
+        <div id="mainPage">
+            <ul>
+                <nav class ="mainMenu">
+                    <img class="img1" src="logo1.png" style="display:inline">
+                <div>
+                    <ul>
+                        <li class="menu">
+                            <a><img alt="메뉴"/></a>
+                            <ul class="hide" style="display: none">
+                                <li onclick="buttonClick1()">자기소개</li>
+                                <li onclick="buttonClick2()">목표</li>
+                                <li onclick="buttonClick3()">참고할 자료</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <br>
+                </nav>
+                <hr style="border: 15px ,black">
+                <div id="buttons">
+                <button id="showMeButton" onclick="buttonClick1()">자기 소개</button>
+                <button id ="targetButton" onclick="buttonClick2()">&nbsp;&nbsp;&nbsp;&nbsp;목표&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                <button id ="xButton" onclick="buttonClick3()">&nbsp;&nbsp;&nbsp;&nbsp;참고할 자료&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                </div>
+            </ul>
+        </div>
+        <!--메인 화면  끝---------------------------------------------------------------------------------------------------------------------                 -->
+
+        <!--자기소개 화면  시작------------------------------------------------------------------------------------------------------------------                -->
+        <div id="showMePage" style="display: none">
+            <nav class ="mainMenu">
+                <img class="img1" src="logo1.png" style="display:inline">
+            <div>
+                <ul>
+                    <li class="menu">
+                        <a><img alt="메뉴"/></a>
+                        <ul class="hide" style="display: none">
+                            <li onclick="buttonClick1()">자기소개</li>
+                            <li onclick="buttonClick2()">목표</li>
+                            <li onclick="buttonClick3()">참고할 자료</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            </nav>
+            <hr style="border: 15px ,black">
+            <div>
+            <img id="img1" src="개인사진.png" >
+            <p class ="showMeWrite">안녕하십니까. 저는 2001년생 이대솔이라고 합니다. 현재 강원대학교 컴퓨터 공학에서 재학중입니다. 2023년을 기준으로 2학년 재학중입니다.
+            프로그래밍에 입문하게 된 계기로는, 게임을 만들었던 경험입니다. 게임을 만드는 동안에는 여러 고민을 하게 됩니다. 하나의 세상을 만드는 것이기에
+            고려해야 할 부분도 많고 그런 문제점들을 하나하나 고쳐가는 과정이 정말 재미있었습니다. 프로그래밍 또한 비슷하게 느껴지는데요. 하나의 코드를 짜게 되었을 때, 생기는 문제점들을 그리고
+            그 문제점들을 고쳐나가는 과정에서 즐거움을 느끼는 저를 발견하였고, 프로그래밍에 입문하게 되었습니다. 저의 최종 목표는 하나의 게임을 혼자 개발하는 것입니다.</p>
+            </div>
+            <hr style="border: 15px ,black">
+            <div class ="address">
+                <a style="display:inline" href="mailto:dleothf2001@naver.com">dleothf2001@naver.com</a>
+            </div>    
+
+        </div>
+        
+
+        <!--자기소개 화면  끝------------------------------------------------------------------------------------------------------------------                -->
+
+         <!--목표및 체크리스트 화면  시작------------------------------------------------------------------------------------------------------------------                -->
+        <div id="targetPage" style="display: none">
+            <nav class ="mainMenu">
+                <img class="img1" src="logo1.png" style="display:inline">
+            <div>
+                <ul>
+                    <li class="menu">
+                        <a><img  alt="메뉴"/></a>
+                        <ul class="hide" style="display: none">
+                            <li onclick="buttonClick1()">자기소개</li>
+                            <li onclick="buttonClick2()">목표</li>
+                            <li onclick="buttonClick3()">참고할 자료</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            </nav>
+            <hr style="border: 15px ,black">
+            <p>저의 목표는 게임 프로그래머가 되는 것 입니다.</p>
+            <p>따라서 목표를 이루기 위해 아래와 같이 해야할 리스트를 작성해 보았습니다.</p>
+            <div id="checkList">
+                <div id="check1">
+                <h3>대학과정</h3>
+                <p style="display: inline;">c언어 기초</p>
+                <input type="checkbox" checked="checked" onclick="return false">
+                <br>
+                <p style="display: inline;">파이썬언어 기초</p>
+                <input type="checkbox" checked="checked" onclick="return false">
+                <br>
+                <p style="display: inline;">자바언어 기초</p>
+                <input type="checkbox" checked="checked" onclick="return false">
+                <br>
+                <p style="display: inline;">알고리즘</p>
+                <input type="checkbox"  onclick="return false">
+                <br>
+                <p style="display: inline;">프론트엔드</p>
+                <input type="checkbox" onclick="return false">
+                <br>
+                <p style="display: inline;">백엔드</p>
+                <input type="checkbox" checked="checked" onclick="return false">
+                <br>
+                <p style="display: inline;">선형대수학</p>
+                <input type="checkbox"  onclick="return false">
+                <br>
+                <p style="display: inline;">미적분</p>
+                <input type="checkbox"  onclick="return false">
+                <br>
+                </div>
+
+                <div id="check2">
+                <h3>개인 활동</h3>
+                <p style="display: inline;">유니티 엔진</p>
+                <input type="checkbox" onclick="return false">
+                <br>
+                <p style="display: inline;">언리얼 엔진</p>
+                <input type="checkbox"  onclick="return false">
+                <br>
+                <p style="display: inline;">팀 단위 프로젝트</p>
+                <input type="checkbox" onclick="return false">
+                <br>
+                </div>
+
+            </div>
+
+        </div>
+         <!--목표및 체크리ㅡ트  끝------------------------------------------------------------------------------------------------------------------                -->
+
+
+          <!--참고자료 화면  시작------------------------------------------------------------------------------------------------------------------                -->
+        <div id="listPage" style="display: none">
+            <nav class ="mainMenu">
+                <img class="img1" src="logo1.png" style="display:inline">
+            <div>
+                <ul>
+                    <li class="menu">
+                        <a><img alt="메뉴"/></a>
+                        <ul class="hide" style="display: none">
+                            <li onclick="buttonClick1()">자기소개</li>
+                            <li onclick="buttonClick2()">목표</li>
+                            <li onclick="buttonClick3()">참고할 자료</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            </nav>
+            <hr style="border: 15px ,black">
+            <a href="#" onclick="window.open('https://www.youtube.com/watch?v=lalavkV3NMA')">5분만에 게임프로그래머 입문하기</a>
+            <br>
+            <a href="#" onclick="window.open('https://www.youtube.com/@user-hu1nx2lw7z')">게임캔버스-게임기획개발아카데미</a>
+            <br>
+            <a href="#" onclick="window.open('https://www.youtube.com/@nadocoding')">나도코딩</a>
+            <br>
+            <a href="#" onclick="window.open('https://www.sciencedirect.com/science/article/abs/pii/S0360131519301034')">게임을 더 잘하기 위한 학습: 게임 기반 학습에 대한 성능 대 완료 조건 보상</a>
+            <br>
+        
+            
+
+
+        </div>
+         <!--미정 화면  끝------------------------------------------------------------------------------------------------------------------                -->
+    </body>
+</html>
